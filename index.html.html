@@ -1,5 +1,3 @@
---- START OF FILE mini app .html ---
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,8 +299,8 @@
             profileNameEl.textContent = userData.name || 'No Name';
             profileEmailEl.textContent = userData.email || 'No Email';
             referralCodeEl.textContent = userData.referralCode || '...';
-            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; /* Taka symbol moved to HTML */
-            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = à§³${appConfig.coinValueInr || 10}`;
+            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; /*
+            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = Tk{appConfig.coinValueInr || 10}`;
             withdrawMethodSelect.innerHTML = '';
             (appConfig.paymentMethods || []).forEach(method => {
                 const option = document.createElement('option');
@@ -319,7 +317,7 @@
             if (userData.lastAdWatchDate !== today) {
                 userData.dailyAdCount = 0;
             }
-            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 10) - userData.dailyAdCount);
+            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 100) - userData.dailyAdCount);
             adsLeftCountEl.textContent = adsLeft;
         }
 
@@ -569,7 +567,7 @@
                 userData.lastAdWatchDate = today;
             }
 
-            if (userData.dailyAdCount >= (appConfig.dailyAdLimit || 10)) {
+            if (userData.dailyAdCount >= (appConfig.dailyAdLimit || 100)) {
                 return showAlert("You have reached your daily ad watch limit.");
             }
             
