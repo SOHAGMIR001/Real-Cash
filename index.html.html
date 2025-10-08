@@ -184,3 +184,124 @@
     <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div class="bg-gray-800 rounded-lg p-6 w-full max-w-sm text-center">
             <
+            <p id="alert-message" class="text-white mb-4"></p>
+            <button id="alert-ok-btn" class="px-6 py-2 rounded-lg btn-accent">OK</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Page navigation
+        const pages = document.querySelectorAll('.sub-page');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function navigateTo(pageId) {
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = Array.from(navLinks).find(link => link.dataset.page === pageId);
+            if (activeLink) activeLink.classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                navigateTo(link.dataset.page);
+            });
+        });
+
+        // Auth toggle
+        const loginView = document.getElementById('login-view');
+        const signupView = document.getElementById('signup-view');
+        document.getElementById('show-signup').addEventListener('click', e => {
+            e.preventDefault();
+            loginView.classList.add('hidden');
+            signupView.classList.remove('hidden');
+        });
+        document.getElementById('show-login').addEventListener('click', e => {
+            e.preventDefault();
+            signupView.classList.add('hidden');
+            loginView.classList.remove('hidden');
+        });
+
+        // Custom alert
+        const customAlert = document.getElementById('custom-alert');
+        const alertMessage = document.getElementById('alert-message');
+        document.getElementById('alert-ok-btn').addEventListener('click', () => {
+            customAlert.classList.add('hidden');
+        });
+        function showAlert(message) {
+            alertMessage.textContent = message;
+            customAlert.classList.remove('hidden');
+        }
+
+        // Placeholder login/signup logic
+        document.getElementById('login-btn').addEventListener('click', () => {
+            // Simulate login success
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('app-container').classList.add('active');
+            navigateTo('home-page');
+        });
+        document.getElementById('signup-btn').addEventListener('click', () => {
+            // Simulate signup success
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('app-container').classList.add('active');
+            navigateTo('home-page');
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            document.getElementById('app-container').classList.remove('active');
+            document.getElementById('auth-section').classList.add('active');
+        });
+
+        // Claim reward placeholder
+        function claimReward(type) {
+            showAlert(`You claimed a reward: ${type}`);
+            // Update coins (example)
+            const coinEl = document.getElementById('coin-balance');
+            coinEl.textContent = parseInt(coinEl.textContent) + 100;
+        }
+
+        // Referral code
+        const referralCode = "ABC123";
+        document.getElementById('referral-code').textContent = referralCode;
+        document.getElementById('copy-code-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(referralCode);
+            showAlert("Referral code copied!");
+        });
+
+        // Withdraw placeholder
+        document.getElementById('withdraw-btn').addEventListener('click', () => {
+            showAlert("Withdrawal requested!");
+        });
+
+        // Notifications example
+        const notificationDot = document.getElementById('notification-dot');
+        const notificationsList = document.getElementById('notifications-list');
+        document.getElementById('notification-bell').addEventListener('click', () => {
+            navigateTo('notifications-page');
+            notificationDot.style.display = 'none';
+        });
+        // Add some example notifications
+        const exampleNotifications = [
+            "You earned 100 Coins!",
+            "New task available!",
+            "Your withdrawal was successful."
+        ];
+        exampleNotifications.forEach(n => {
+            const div = document.createElement('div');
+            div.className = 'card-bg p-3 rounded-lg';
+            div.textContent = n;
+            notificationsList.appendChild(div);
+        });
+        // Show notification dot if there are notifications
+        if(exampleNotifications.length > 0){
+            notificationDot.style.display = 'block';
+        }
+
+        // Bottom nav initial active page
+        navigateTo('home-page');
+    </script>
+</body>
+</html>
