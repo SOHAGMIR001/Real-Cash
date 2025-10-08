@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Cash App</title>
     
-    <!-- Your New Ad Code -->
- <script src='//libtl.com/sdk.js' data-zone='10002586' data-sdk='show_10002586'></script>
+    <!-- Ad Code -->
+    <script src='//libtl.com/sdk.js' data-zone='10002586' data-sdk='show_10002586'></script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
 </head>
 <body class="max-w-md mx-auto">
 
-    <!-- App Loader -->
+    <!-- Loader -->
     <div id="loader" class="hidden fixed inset-0 dark-bg bg-opacity-75 flex items-center justify-center z-50">
         <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-accent"></div>
     </div>
@@ -55,7 +55,7 @@
                 <p class="text-center text-gray-400">Don't have an account? <a href="#" id="show-signup" class="font-semibold text-accent">Sign Up</a></p>
             </div>
             <div id="signup-view" class="hidden">
-                 <input id="signup-name" type="text" placeholder="Full Name" class="w-full p-3 rounded-lg input-field mb-4">
+                <input id="signup-name" type="text" placeholder="Full Name" class="w-full p-3 rounded-lg input-field mb-4">
                 <input id="signup-email" type="email" placeholder="Email" class="w-full p-3 rounded-lg input-field mb-4">
                 <input id="signup-password" type="password" placeholder="Password" class="w-full p-3 rounded-lg input-field mb-4">
                 <button id="signup-btn" class="w-full p-3 rounded-lg btn-accent mb-4">Sign Up</button>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <!-- Main App Container -->
+    <!-- Main App -->
     <div id="app-container" class="min-h-screen flex-col main-page">
         <header class="flex items-center justify-between p-4 sticky top-0 bg-opacity-80 backdrop-blur-md z-10 dark-bg">
             <h1 class="text-xl font-bold">Real Cash</h1>
@@ -97,15 +97,15 @@
                     </div>
                     <div class="space-y-3">
                         <div class="bg-orange-500 p-3 rounded-lg flex items-center justify-between text-black">
-                            <div class="flex items-center space-x-3"><span class="text-3xl">🤩</span><div><h3 class="font-bold">Watch Short Ad</h3><p class="text-xs font-medium">Rewarded Interstitial</p></div></div>
+                            <div class="flex items-center space-x-3"><span class="text-3xl">🤖</span><div><h3 class="font-bold">Watch Short Ad</h3><p class="text-xs font-medium">Rewarded Interstitial</p></div></div>
                             <button class="bg-white text-orange-500 font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('interstitial')">Claim</button>
                         </div>
                         <div class="card-bg p-3 rounded-lg flex items-center justify-between">
                             <div class="flex items-center space-x-3"><span class="text-3xl">😎</span><div><h3 class="font-semibold">Click for Reward</h3><p class="text-xs text-gray-400">Rewarded Popup</p></div></div>
                             <button class="bg-white text-black font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('popup')">Claim</button>
                         </div>
-                         <div class="card-bg p-3 rounded-lg flex items-center justify-between">
-                            <div class="flex items-center space-x-3"><span class="text-3xl">👀</span><div><h3 class="font-semibold">Watch a Video</h3><p class="text-xs text-gray-400">In-App Interstitial</p></div></div>
+                        <div class="card-bg p-3 rounded-lg flex items-center justify-between">
+                            <div class="flex items-center space-x-3"><span class="text-3xl">👆</span><div><h3 class="font-semibold">Watch a Video</h3><p class="text-xs text-gray-400">In-App Interstitial</p></div></div>
                             <button class="bg-gray-700 text-white font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('inApp')">Start</button>
                         </div>
                         <div class="card-bg p-3 rounded-lg flex items-center justify-between">
@@ -122,8 +122,8 @@
                 <div class="card-bg p-4 rounded-lg">
                     <h3 class="font-semibold mb-3">Withdraw Earnings</h3>
                     <p class="text-sm text-gray-400 mb-1">Current Balance: <span class="font-bold text-accent"><span id="wallet-coin-balance">0</span> Coins</span></p>
-                    <p class="text-sm text-gray-400 mb-2">Minimum Withdrawal: <span id="min-withdrawal-info">...</span> Coins</p>
-                    <p class="text-sm text-gray-400 mb-4 font-semibold" id="coin-value-info">...</p>
+                    <p class="text-sm text-gray-400 mb-2">Minimum Withdrawal: <span id="min-withdrawal-info">5000</span> Coins</p>
+                    <p class="text-sm text-gray-400 mb-4 font-semibold" id="coin-value-info">1000 Coins = Tk 20</p>
                     <input id="withdraw-amount" type="number" placeholder="Enter coin amount" class="w-full p-3 rounded-lg input-field mb-3">
                     <select id="withdraw-method" class="w-full p-3 rounded-lg input-field mb-3"></select>
                     <div id="payment-details-container"></div>
@@ -137,21 +137,21 @@
 
             <!-- Refer Page -->
             <div id="refer-page" class="p-4 space-y-6 sub-page">
-                 <h2 class="text-xl font-bold text-center">Refer & Earn</h2>
-                 <div class="card-bg p-6 rounded-lg text-center">
-                     <p class="text-gray-400 mb-2">Your Referral Code</p>
-                     <div class="bg-gray-800 p-3 rounded-lg flex items-center justify-center mb-4">
-                         <span id="referral-code" class="text-2xl font-bold tracking-widest">LOADING...</span>
-                         <button id="copy-code-btn" class="ml-4"><i data-lucide="copy" class="w-6 h-6 text-gray-400"></i></button>
-                     </div>
-                     <p class="text-sm text-gray-300">Share the code with your friends.</p>
-                 </div>
-                 <button id="share-btn" class="w-full p-3 rounded-lg btn-accent">Share Your Code</button>
-                 <div class="card-bg p-4 rounded-lg mt-6">
+                <h2 class="text-xl font-bold text-center">Refer & Earn</h2>
+                <div class="card-bg p-6 rounded-lg text-center">
+                    <p class="text-gray-400 mb-2">Your Referral Code</p>
+                    <div class="bg-gray-800 p-3 rounded-lg flex items-center justify-center mb-4">
+                        <span id="referral-code" class="text-2xl font-bold tracking-widest">LOADING...</span>
+                        <button id="copy-code-btn" class="ml-4"><i data-lucide="copy" class="w-6 h-6 text-gray-400"></i></button>
+                    </div>
+                    <p class="text-sm text-gray-300">Share the code with your friends.</p>
+                </div>
+                <button id="share-btn" class="w-full p-3 rounded-lg btn-accent">Share Your Code</button>
+                <div class="card-bg p-4 rounded-lg mt-6">
                     <h3 class="font-semibold mb-3 text-center">Have a Referral Code?</h3>
                     <input id="enter-referral-code" type="text" placeholder="Enter code here" class="w-full p-3 rounded-lg input-field mb-3">
                     <button id="apply-referral-btn" class="w-full p-3 rounded-lg btn-outline-accent">Apply Code</button>
-                 </div>
+                </div>
             </div>
 
             <!-- Profile Page -->
@@ -164,7 +164,7 @@
                 </div>
                 <button id="logout-btn" class="w-full mt-6 p-3 rounded-lg bg-red-600 text-white font-bold">Logout</button>
             </div>
-            
+
             <!-- Notifications Page -->
             <div id="notifications-page" class="p-4 space-y-4 sub-page">
                 <h2 class="text-xl font-bold text-center">Notifications</h2>
@@ -179,364 +179,8 @@
             <a href="#" class="nav-link" data-page="profile-page"><i data-lucide="user" class="mx-auto w-6 h-6"></i><span class="text-xs">Profile</span></a>
         </nav>
     </div>
-    
+
+    <!-- Custom Alert -->
     <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div class="bg-gray-800 rounded-lg p-6 w-full max-w-sm text-center">
-            <p id="alert-message" class="mb-4"></p>
-            <button id="alert-ok-btn" class="btn-accent px-6 py-2 rounded-lg">OK</button>
-        </div>
-    </div>
-
-    <script type="module">
-        const firebaseConfig = {
-  apiKey: "AIzaSyCPGVrqHSNdMZwaEJ3GCvubHBhUUDxR4TQ",
-  authDomain: "real-cash-c9636.firebaseapp.com",
-  databaseURL: "https://real-cash-c9636-default-rtdb.firebaseio.com",
-  projectId: "real-cash-c9636",
-  storageBucket: "real-cash-c9636.firebasestorage.app",
-  messagingSenderId: "659142412813",
-  appId: "1:659142412813:web:d21f8c40a76782c1ffe344",
-  measurementId: "G-GWC5E8L26Z"
-};
-        
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, addDoc, serverTimestamp, query, where, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        let currentUser = null;
-        let userData = null;
-        let appConfig = {};
-
-        const loader = document.getElementById('loader');
-        const coinBalanceEl = document.getElementById('coin-balance');
-        const walletCoinBalanceEl = document.getElementById('wallet-coin-balance');
-        const profileNameEl = document.getElementById('profile-name');
-        const profileEmailEl = document.getElementById('profile-email');
-        const referralCodeEl = document.getElementById('referral-code');
-        const minWithdrawalInfoEl = document.getElementById('min-withdrawal-info');
-        const coinValueInfoEl = document.getElementById('coin-value-info');
-        const withdrawMethodSelect = document.getElementById('withdraw-method');
-        const notificationDot = document.getElementById('notification-dot');
-        const adsLeftCountEl = document.getElementById('ads-left-count');
-        const paymentDetailsContainer = document.getElementById('payment-details-container');
-
-        window.onload = () => {
-            lucide.createIcons();
-            setupEventListeners();
-            showMainPage('auth-section');
-            loader.style.display = 'none';
-            onAuthStateChanged(auth, handleAuthStateChange);
-        };
-
-        async function handleAuthStateChange(user) {
-            if (user) {
-                loader.style.display = 'flex';
-                currentUser = user;
-                await fetchUserData();
-                if (userData.isBlocked) {
-                    showAlert("Your account has been blocked.");
-                    await signOut(auth);
-                    loader.style.display = 'none';
-                    return;
-                }
-                await fetchAppConfig();
-                await checkNewNotifications();
-                updateUI();
-                showMainPage('app-container');
-                navigateTo('home-page');
-                loader.style.display = 'none';
-            } else {
-                currentUser = null;
-                userData = null;
-                showMainPage('auth-section');
-            }
-        }
-
-        async function fetchUserData() {
-            if (!currentUser) return;
-            const userRef = doc(db, "users", currentUser.uid);
-            try {
-                const userSnap = await getDoc(userRef);
-                if (userSnap.exists()) {
-                    userData = userSnap.data();
-                } else {
-                    const ownReferralCode = Math.random().toString(36).substring(2, 8).toUpperCase();
-                    const defaultUserData = {
-                        uid: currentUser.uid, name: currentUser.displayName || currentUser.email.split('@')[0], email: currentUser.email,
-                        balance: 50, referralCode: ownReferralCode, referredBy: null,
-                        lastNotificationCheck: new Date(),
-                        createdAt: serverTimestamp(),
-                        dailyAdCount: 0, lastAdWatchDate: new Date().toISOString().split('T')[0], isBlocked: false
-                    };
-                    await setDoc(userRef, defaultUserData);
-                    userData = defaultUserData;
-                }
-            } catch (error) {
-                console.error("Error fetching user data:", error);
-                showAlert("Error loading user data.");
-            }
-        }
-
-        async function fetchAppConfig() {
-            const configRef = doc(db, "config", "main");
-            try {
-                const configSnap = await getDoc(configRef);
-                appConfig = configSnap.exists() ? configSnap.data() : { minWithdrawal: 5000, paymentMethods: ["UPI", "bKash"], dailyAdLimit: 10, coinValueCoins: 1000, coinValueInr: 10 };
-            } catch (error) {
-                console.error("Error fetching app config:", error);
-            }
-        }
-        
-        function updateUI() {
-            if (!userData) return;
-            const balance = userData.balance || 0;
-            coinBalanceEl.textContent = balance;
-            walletCoinBalanceEl.textContent = balance;
-            profileNameEl.textContent = userData.name || 'No Name';
-            profileEmailEl.textContent = userData.email || 'No Email';
-            referralCodeEl.textContent = userData.referralCode || '...';
-            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; 
-            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = Tk 20`; // Changed to 'Tk 20'
-            withdrawMethodSelect.innerHTML = '';
-            (appConfig.paymentMethods || []).forEach(method => {
-                const option = document.createElement('option');
-                option.value = method;
-                option.textContent = method;
-                withdrawMethodSelect.appendChild(option);
-            });
-            updateDynamicPaymentFields();
-            updateAdsLeftCount();
-        }
-
-        function updateAdsLeftCount() {
-            const today = new Date().toISOString().split('T')[0];
-            if (userData.lastAdWatchDate !== today) {
-                userData.dailyAdCount = 0;
-            }
-            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 10) - userData.dailyAdCount);
-            adsLeftCountEl.textContent = adsLeft;
-        }
-
-        function updateDynamicPaymentFields() {
-            const selectedMethod = withdrawMethodSelect.value.toLowerCase();
-            let placeholder = "Enter Details";
-            if (selectedMethod.includes('upi')) placeholder = "Enter your UPI ID";
-            if (selectedMethod.includes('bkash')) placeholder = "Enter your bKash Number";
-            paymentDetailsContainer.innerHTML = `<input id="payment-detail-input" type="text" placeholder="${placeholder}" class="w-full p-3 rounded-lg input-field">`;
-        }
-
-        function showMainPage(pageId) {
-            document.querySelectorAll('.main-page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-
-        function navigateTo(pageId) {
-            document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active', 'text-accent');
-                if (link.dataset.page === pageId) link.classList.add('active', 'text-accent');
-            });
-        }
-        window.navigateTo = navigateTo;
-
-        function setupEventListeners() {
-            document.getElementById('show-signup').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('login-view').classList.add('hidden'); document.getElementById('signup-view').classList.remove('hidden'); });
-            document.getElementById('show-login').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('signup-view').classList.add('hidden'); document.getElementById('login-view').classList.remove('hidden'); });
-            document.getElementById('signup-btn').addEventListener('click', handleSignup);
-            document.getElementById('login-btn').addEventListener('click', handleLogin);
-            document.getElementById('logout-btn').addEventListener('click', handleLogout);
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const pageId = link.dataset.page;
-                    if (pageId === 'wallet-page') loadWithdrawalHistory();
-                    navigateTo(pageId);
-                });
-            });
-            document.getElementById('notification-bell').addEventListener('click', () => { navigateTo('notifications-page'); loadNotifications(); });
-            document.getElementById('copy-code-btn').addEventListener('click', copyReferralCode);
-            document.getElementById('share-btn').addEventListener('click', shareReferralCode);
-            document.getElementById('withdraw-btn').addEventListener('click', handleWithdrawal);
-            document.getElementById('home-withdraw-btn').addEventListener('click', () => navigateTo('wallet-page'));
-            document.getElementById('apply-referral-btn').addEventListener('click', handleApplyReferralCode);
-            withdrawMethodSelect.addEventListener('change', updateDynamicPaymentFields);
-        }
-
-        async function handleSignup() {
-            const name = document.getElementById('signup-name').value;
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            if (!name || !email || !password) return showAlert("Please fill all fields.");
-            loader.style.display = 'flex';
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const userRef = doc(db, "users", userCredential.user.uid);
-                await updateDoc(userRef, { name: name });
-            } catch (error) {
-                showAlert(error.message);
-            } finally {
-                loader.style.display = 'none';
-            }
-        }
-
-        async function handleLogin() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            if (!email || !password) return showAlert("Please enter email and password.");
-            loader.style.display = 'flex';
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-            } catch (error) {
-                showAlert(error.message);
-            } finally {
-                loader.style.display = 'none';
-            }
-        }
-
-        async function handleLogout() { await signOut(auth); }
-        
-        async function checkNewNotifications() {
-            const lastCheck = userData.lastNotificationCheck;
-            if (!lastCheck || typeof lastCheck.seconds === 'undefined') {
-                console.log("lastNotificationCheck is not a valid timestamp yet. Skipping check.");
-                return;
-            }
-            const q = query(collection(db, "notifications"), where("createdAt", ">", lastCheck), limit(1));
-            const querySnapshot = await getDocs(q);
-            notificationDot.style.display = querySnapshot.empty ? 'none' : 'block';
-        }
-
-        async function loadNotifications() {
-            const listEl = document.getElementById('notifications-list');
-            listEl.innerHTML = '<p class="text-gray-400">Loading...</p>';
-            notificationDot.style.display = 'none';
-            const q = query(collection(db, "notifications"), orderBy("createdAt", "desc"));
-            try {
-                const querySnapshot = await getDocs(q);
-                if (querySnapshot.empty) {
-                    listEl.innerHTML = '<p class="text-gray-400 text-center">No notifications available.</p>';
-                    return;
-                }
-                listEl.innerHTML = '';
-                querySnapshot.forEach(doc => {
-                    const msg = doc.data();
-                    const date = msg.createdAt ? msg.createdAt.toDate().toLocaleDateString() : 'N/A';
-                    listEl.innerHTML += `<div class="card-bg p-4 rounded-lg"><div class="flex justify-between items-center mb-1"><h3 class="font-bold">${msg.title}</h3><p class="text-xs text-gray-400">${date}</p></div><p class="text-sm text-gray-300">${msg.message}</p></div>`;
-                });
-                await updateDoc(doc(db, "users", currentUser.uid), { lastNotificationCheck: serverTimestamp() });
-            } catch (error) {
-                console.error("Error loading notifications:", error);
-                listEl.innerHTML = '<p class="text-red-400">Error loading notifications.</p>';
-            }
-        }
-
-        async function loadWithdrawalHistory() {
-            const historyList = document.getElementById('withdrawal-history-list');
-            historyList.innerHTML = '<p class="text-gray-400">Loading history...</p>';
-            const q = query(collection(db, "withdrawals"), where("userId", "==", currentUser.uid), orderBy("requestedAt", "desc"));
-            try {
-                const querySnapshot = await getDocs(q);
-                if (querySnapshot.empty) {
-                    historyList.innerHTML = '<p class="text-gray-400 text-center">You haven\'t made any withdrawals yet.</p>';
-                    return;
-                }
-                historyList.innerHTML = '';
-                querySnapshot.forEach(doc => {
-                    const request = doc.data();
-                    const status = request.status;
-                    let statusColor = 'text-yellow-400';
-                    if (status === 'approved') statusColor = 'text-green-400';
-                    else if (status === 'rejected') statusColor = 'text-red-400';
-                    const date = request.requestedAt ? request.requestedAt.toDate().toLocaleDateString() : 'N/A';
-                    historyList.innerHTML += `<div class="card-bg p-3 rounded-lg flex items-center justify-between"><div><p class="font-semibold">${request.amount} Coins - ${request.method}</p><p class="text-xs text-gray-400">${date}</p></div><p class="font-bold ${statusColor} capitalize">${status}</p></div>`;
-                });
-            } catch (error) {
-                console.error("Error fetching withdrawal history: ", error);
-                historyList.innerHTML = '<p class="text-red-400 text-center">Error loading history.</p>';
-            }
-        }
-        
-        async function handleApplyReferralCode() {
-            if (userData.referredBy) return showAlert("You have already used a referral code.");
-            const codeInput = document.getElementById('enter-referral-code');
-            const code = codeInput.value.trim().toUpperCase();
-            if (!code) return showAlert("Please enter a code.");
-            if (code === userData.referralCode) return showAlert("You cannot use your own code.");
-            loader.style.display = 'flex';
-            await applyReferralBonus(code, true);
-            codeInput.value = '';
-            loader.style.display = 'none';
-        }
-
-        async function applyReferralBonus(referrerCode, isManualApply = false) {
-            const usersRef = collection(db, "users");
-            const q = query(usersRef, where("referralCode", "==", referrerCode));
-            try {
-                const querySnapshot = await getDocs(q);
-                if (!querySnapshot.empty) {
-                    const referrerDoc = querySnapshot.docs[0];
-                    const referrerRef = doc(db, "users", referrerDoc.id);
-                    const referrerData = referrerDoc.data();
-                    await updateDoc(referrerRef, { balance: (referrerData.balance || 0) + 100 });
-                    const newUserRef = doc(db, "users", currentUser.uid);
-                    await updateDoc(newUserRef, { balance: (userData.balance || 0) + 100, referredBy: referrerCode });
-                    userData.balance += 100; userData.referredBy = referrerCode;
-                    updateUI();
-                    if(isManualApply) showAlert("Code applied successfully! You have received 100 coins.");
-                } else {
-                    if(isManualApply) showAlert("Invalid referral code.");
-                }
-            } catch(error) {
-                console.error("Error applying referral bonus: ", error);
-                if(isManualApply) showAlert("Error applying code.");
-            }
-        }
-
-        async function updateBalance(amount) {
-            if (!currentUser) return;
-            const newBalance = (userData.balance || 0) + amount;
-            const userRef = doc(db, "users", currentUser.uid);
-            await updateDoc(userRef, { balance: newBalance });
-            userData.balance = newBalance;
-            updateUI();
-        }
-
-        async function handleWithdrawal() {
-            const amount = parseInt(document.getElementById('withdraw-amount').value);
-            const method = document.getElementById('withdraw-method').value;
-            const paymentDetailInput = document.getElementById('payment-detail-input');
-            const paymentDetail = paymentDetailInput ? paymentDetailInput.value.trim() : '';
-            const minWithdrawal = appConfig.minWithdrawal || 5000;
-
-            if (!amount || amount <= 0) return showAlert("Please enter a valid amount.");
-            if (amount < minWithdrawal) return showAlert(`Minimum withdrawal is ${minWithdrawal} coins.`);
-            if (amount > userData.balance) return showAlert("Insufficient balance.");
-            if (!paymentDetail) return showAlert("Please enter payment details (e.g., UPI ID or bKash Number).");
-
-            loader.style.display = 'flex';
-            try {
-                await updateBalance(-amount);
-                await addDoc(collection(db, "withdrawals"), {
-                    userId: currentUser.uid, userName: userData.name, userEmail: userData.email,
-                    amount: amount, method: method, paymentDetail: paymentDetail, status: "pending", requestedAt: serverTimestamp()
-                });
-                showAlert("Withdrawal request submitted successfully!");
-                document.getElementById('withdraw-amount').value = '';
-                paymentDetailInput.value = '';
-                loadWithdrawalHistory();
-            } catch (error) {
-                showAlert("Error submitting request: " + error.message);
-                await updateBalance(amount); // Refund if error
-            } finally {
-                loader.style.display = 'none';
-            }
-        }
-
-        function copyReferralCode() {
-            const textToCopy = referralCodeEl.textContent;
-            navigator.clipboard.writeText
+            <
