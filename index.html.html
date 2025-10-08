@@ -299,7 +299,7 @@
             profileNameEl.textContent = userData.name || 'No Name';
             profileEmailEl.textContent = userData.email || 'No Email';
             referralCodeEl.textContent = userData.referralCode || '...';
-            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; /*
+            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; / *Money Bag symbol moved to HTML */
             coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = Tk ${appConfig.coinValueInr || 20}`;
             withdrawMethodSelect.innerHTML = '';
             (appConfig.paymentMethods || []).forEach(method => {
