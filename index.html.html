@@ -285,7 +285,7 @@
             const configRef = doc(db, "config", "main");
             try {
                 const configSnap = await getDoc(configRef);
-                appConfig = configSnap.exists() ? configSnap.data() : { minWithdrawal: 5000, paymentMethods: ["UPI", "bKash"], dailyAdLimit: 10, coinValueCoins: 1000, coinValueInr: 10 };
+                appConfig = configSnap.exists() ? configSnap.data() : { minWithdrawal: 5000, paymentMethods: ["Nagod", "bKash","binance"], dailyAdLimit: 100, coinValueCoins: 1000, coinValuebdt: 20 };
             } catch (error) {
                 console.error("Error fetching app config:", error);
             }
@@ -299,8 +299,8 @@
             profileNameEl.textContent = userData.name || 'No Name';
             profileEmailEl.textContent = userData.email || 'No Email';
             referralCodeEl.textContent = userData.referralCode || '...';
-            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; /* Coin symbol moved to HTML */
-            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = Tk${appConfig.coinValueInr || 20}`;
+            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; /*
+            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = Tk ${appConfig.coinValueInr || 20}`;
             withdrawMethodSelect.innerHTML = '';
             (appConfig.paymentMethods || []).forEach(method => {
                 const option = document.createElement('option');
@@ -317,7 +317,7 @@
             if (userData.lastAdWatchDate !== today) {
                 userData.dailyAdCount = 0;
             }
-            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 10) - userData.dailyAdCount);
+            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 100) - userData.dailyAdCount);
             adsLeftCountEl.textContent = adsLeft;
         }
 
@@ -517,7 +517,7 @@
             if (!amount || amount <= 0) return showAlert("Please enter a valid amount.");
             if (amount < minWithdrawal) return showAlert(`Minimum withdrawal is ${minWithdrawal} coins.`);
             if (amount > userData.balance) return showAlert("Insufficient balance.");
-            if (!paymentDetail) return showAlert("Please enter payment details (e.g., UPI ID or bKash Number).");
+            if (!paymentDetail) return showAlert("Please enter payment details (e.g., Nagod Number or bKash Number or Binance id).");
 
             loader.style.display = 'flex';
             try {
