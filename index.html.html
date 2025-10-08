@@ -501,4 +501,18 @@
             notificationDot.style.display = querySnapshot.empty ? 'none' : 'block';
         }
 
-        async function loadNotifications() {
+        async function loadNotifications() 
+
+          function showAlert(message) {
+            document.getElementById('alert-message').textContent = message;
+            document.getElementById('custom-alert').classList.remove('hidden');
+            document.getElementById('alert-ok-btn').onclick = () => {
+                document.getElementById('custom-alert').classList.add('hidden');
+            };
+        }
+        window.showAlert = showAlert;
+
+    </script>
+</body>
+
+</html>
