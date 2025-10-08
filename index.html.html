@@ -122,8 +122,8 @@
                 <div class="card-bg p-4 rounded-lg">
                     <h3 class="font-semibold mb-3">Withdraw Earnings</h3>
                     <p class="text-sm text-gray-400 mb-1">Current Balance: <span class="font-bold text-accent"><span id="wallet-coin-balance">0</span> Coins</span></p>
-                    <p class="text-sm text-gray-400 mb-2">Minimum Withdrawal: ৳<span id="min-withdrawal-info">...</span> Coins</p>
-                    <p class="text-sm text-gray-400 mb-4 font-semibold" id="coin-value-info">...</p>
+                    <p class="text-sm text-gray-400 mb-2">Minimum Withdrawal: <span id="min-withdrawal-info">...</span> Coins</p>
+                    <p class="text-sm text-gray-400 mb-4 font-semibold" id="coin-value-info"></p>
                     <input id="withdraw-amount" type="number" placeholder="Enter coin amount" class="w-full p-3 rounded-lg input-field mb-3">
                     <select id="withdraw-method" class="w-full p-3 rounded-lg input-field mb-3"></select>
                     <div id="payment-details-container"></div>
@@ -285,6 +285,7 @@
             const configRef = doc(db, "config", "main");
             try {
                 const configSnap = await getDoc(configRef);
+                // Set default values for 1000 coins = 10 Tk
                 appConfig = configSnap.exists() ? configSnap.data() : { minWithdrawal: 5000, paymentMethods: ["UPI", "bKash"], dailyAdLimit: 10, coinValueCoins: 1000, coinValueInr: 10 };
             } catch (error) {
                 console.error("Error fetching app config:", error);
@@ -299,8 +300,8 @@
             profileNameEl.textContent = userData.name || 'No Name';
             profileEmailEl.textContent = userData.email || 'No Email';
             referralCodeEl.textContent = userData.referralCode || '...';
-            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; /*
-            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = Tk{appConfig.coinValueInr || 10}`;
+            minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000}`; 
+            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = ${appConfig.coinValueInr || 10} Tk`;
             withdrawMethodSelect.innerHTML = '';
             (appConfig.paymentMethods || []).forEach(method => {
                 const option = document.createElement('option');
@@ -317,7 +318,7 @@
             if (userData.lastAdWatchDate !== today) {
                 userData.dailyAdCount = 0;
             }
-            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 100) - userData.dailyAdCount);
+            const adsLeft = Math.max(0, (appConfig.dailyAdLimit || 10) - userData.dailyAdCount);
             adsLeftCountEl.textContent = adsLeft;
         }
 
@@ -536,89 +537,3 @@
                 loader.style.display = 'none';
             }
         }
-
-        function copyReferralCode() {
-            const textToCopy = referralCodeEl.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showAlert("Referral code copied!");
-            }).catch(err => {
-                showAlert("Failed to copy code.");
-            });
-        }
-        
-        function shareReferralCode() {
-            const text = `Join Real Cash and earn money! Use my referral code to get a bonus: ${userData.referralCode}`;
-            if (navigator.share) {
-                navigator.share({ title: 'Join Real Cash!', text: text, url: window.location.href })
-                    .catch((error) => console.error("Share failed:", error));
-            } else {
-                copyReferralCode();
-                showAlert("Share feature is not available. Referral code has been copied instead!");
-            }
-        }
-
-        window.claimReward = async function(taskType) {
-            const today = new Date().toISOString().split('T')[0];
-            const userRef = doc(db, "users", currentUser.uid);
-
-            if (userData.lastAdWatchDate !== today) {
-                await updateDoc(userRef, { dailyAdCount: 0, lastAdWatchDate: today });
-                userData.dailyAdCount = 0;
-                userData.lastAdWatchDate = today;
-            }
-
-            if (userData.dailyAdCount >= (appConfig.dailyAdLimit || 100)) {
-                return showAlert("You have reached your daily ad watch limit.");
-            }
-            
-            if (typeof window.show_10002586 !== 'function') {
-                return showAlert("Ad service is currently unavailable. Please try again later.");
-            }
-            
-            let adPromise;
-            loader.style.display = 'flex';
-            try {
-                 switch(taskType) {
-                    case 'interstitial': adPromise = window.show_10002586(); break;
-                    case 'popup': adPromise = window.show_10002586('pop'); break;
-                    case 'inApp': adPromise = window.show_10002586({ type: 'inApp', inAppSettings: { frequency: 2, capping: 0.1, interval: 30, timeout: 5, everyPage: false } }); break;
-                    case 'miniApp': adPromise = window.show_10002586(); break;
-                    default: return;
-                }
-                
-                await adPromise;
-
-                const newCount = (userData.dailyAdCount || 0) + 1;
-                await updateDoc(userRef, { dailyAdCount: newCount });
-                userData.dailyAdCount = newCount;
-                
-                let rewardAmount = 0;
-                if (taskType === 'miniApp') rewardAmount = 100;
-                else if (taskType !== 'inApp') rewardAmount = 50;
-
-                if (rewardAmount > 0) {
-                    await updateBalance(rewardAmount);
-                    showAlert(`Congratulations! You have won ${rewardAmount} coins.`);
-                }
-                updateAdsLeftCount();
-
-            } catch(e) {
-                console.error("Ad error:", e);
-                showAlert('Could not show ad. Please try again later.');
-            } finally {
-                loader.style.display = 'none';
-            }
-        }
-
-        function showAlert(message) {
-            document.getElementById('alert-message').textContent = message;
-            document.getElementById('custom-alert').classList.remove('hidden');
-            document.getElementById('alert-ok-btn').onclick = () => {
-                document.getElementById('custom-alert').classList.add('hidden');
-            };
-        }
-        window.showAlert = showAlert;
-
-    </script>
-</body>
-</html>
